@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     Animator _anim;
     #endregion
 
-    [SerializeField] Vector2 _inputVec;
+    [SerializeField] Vector2 _inputVec; public Vector2 InputVec { get { return _inputVec; } }
     [SerializeField] float _moveSpeed; public float MoveSpeed { get { return _moveSpeed; } }
 
     public void Init()
