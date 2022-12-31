@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
             Debug.LogError("Player _sprite is Null");
         if (!TryGetComponent(out _anim))
             Debug.LogError("Player _anim is Null");
-        _moveSpeed = 5.0f;
+        _moveSpeed = 3.0f;
     }
 
     void Start()
