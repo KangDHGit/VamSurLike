@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
 {
     #region Components
     Rigidbody2D _rigid;
-    SpriteRenderer _sprite;
+    SpriteRenderer _spriteR;
     Animator _anim;
     #endregion
 
@@ -18,17 +18,13 @@ public class Player : MonoBehaviour
     {
         if (!TryGetComponent(out _rigid))
             Debug.LogError("Player _rigid is Null");
-        if (!TryGetComponent(out _sprite))
+        if (!TryGetComponent(out _spriteR))
             Debug.LogError("Player _sprite is Null");
         if (!TryGetComponent(out _anim))
             Debug.LogError("Player _anim is Null");
         _moveSpeed = 3.0f;
     }
 
-    void Start()
-    {
-        Init();
-    }
     void Update()
     {
         //Input();
@@ -64,9 +60,9 @@ public class Player : MonoBehaviour
 
     void flip()
     {
-        if (_sprite != null) {
+        if (_spriteR != null) {
             if (_inputVec.x != 0)
-                _sprite.flipX = _inputVec.x < 0;
+                _spriteR.flipX = _inputVec.x < 0;
         }
         else
             Debug.LogError("Player _sprite is Null");

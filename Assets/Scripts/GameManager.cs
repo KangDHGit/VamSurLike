@@ -9,5 +9,6 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         I = this;
+        _player.Init();
     }
 }
