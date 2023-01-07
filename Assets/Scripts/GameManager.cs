@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager I;
     public Player _player;
+    public PoolManager _poolManager;
     private void Awake()
     {
         I = this;

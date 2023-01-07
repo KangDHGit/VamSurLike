@@ -31,11 +31,6 @@ public class Enemy : MonoBehaviour
             Debug.LogError(this.gameObject.name + "_target is Null");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     private void FixedUpdate()
     {
         if (!isLive) return;
