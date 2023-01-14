@@ -7,21 +7,24 @@ public class Enemy : MonoBehaviour
     #region Component
     SpriteRenderer _sprite;
     Rigidbody2D _rigid;
+    Animator _anim;
     #endregion
 
     [SerializeField] float _speed;
+    [SerializeField] float _health;
+    [SerializeField] float _maxHealth;
+    [SerializeField] RuntimeAnimatorController[] _animCon;  //애니매이터안에 들어가는 컨트롤러들을 담을 배열
     [SerializeField] Rigidbody2D _target;
 
-    bool isLive = true;
-
+    bool isLive;
 
     // Start is called before the first frame update
     void Start()
     {
-        init();
+        
     }
 
-    void init()
+    void Init()
     {
         if (!TryGetComponent(out _rigid))
             Debug.LogError(this.gameObject.name + "_rigid is Null");
@@ -29,6 +32,15 @@ public class Enemy : MonoBehaviour
             Debug.LogError(this.gameObject.name + "_sprite is Null");
         if (!GameManager.I._player.TryGetComponent(out _target))
             Debug.LogError(this.gameObject.name + "_target is Null");
+        if (!TryGetComponent(out _anim))
+            Debug.LogError(this.gameObject.name + "_anim is NULL");
+    }
+    public void Init(SpawnData data)
+    {
+        _anim.runtimeAnimatorController = _animCon[data.SpriteType];
+        _speed = data.Speed;
+        _maxHealth = data.MaxHealth;
+        _health = data.MaxHealth;
     }
 
     private void FixedUpdate()
@@ -46,6 +58,13 @@ public class Enemy : MonoBehaviour
 
         if (_target != null)
             Flip();
+    }
+
+    private void OnEnable() //Start 함수보다 먼저 호출
+    {
+        Init();
+        isLive = true;
+        _health = _maxHealth;
     }
     void MoveToTarget()
     {

@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 2754393802191367982}
   - component: {fileID: 2754393802191367977}
   m_Layer: 0
-  m_Name: Enemy_B
+  m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -243,7 +243,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce76b9e75668cc04eb0ff2261fc87812, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 1
+  _speed: 0
+  _health: 0
+  _maxHealth: 0
+  _animCon:
+  - {fileID: 9100000, guid: f2855d618fc8d9c499189d3f39b9cbbc, type: 2}
+  - {fileID: 22100000, guid: 12cfc8b2360c2fc4499d4f6f6607671a, type: 2}
   _target: {fileID: 0}
 --- !u!114 &2754393802191367977
 MonoBehaviour:
